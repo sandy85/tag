@@ -17,6 +17,7 @@ from sklearn.multiclass import OneVsRestClassifier
 from sklearn.linear_model import LogisticRegression
 app = Flask(__name__)
 
+#obliger de mettre \ devant \tag car considère que c'est un caractère spécial
 path = "P:\openclassrooms\P6_categorie_question\API\\tag"
 
 """
@@ -117,8 +118,8 @@ def calcul():
     df = list(zip(cols,liste))
     df = pd.DataFrame(df,columns = ['tag','proba'])
 
-    #conservation des tags dont la proba est supérieure au meilleur seuil(0.28)
-    df = df[df['proba'] > 0.28]
+    #conservation des tags dont la proba est supérieure au meilleur seuil(0.18)
+    df = df[df['proba'] > 0.18]
     # tri par proba décroissante
     df.sort_values(by='proba',ascending=False)
     res=df.to_html()
